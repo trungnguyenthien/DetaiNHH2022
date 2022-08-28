@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8">
+    <title>Change_me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./common.js"></script>
+</head>
+
+<body>
+
+    <div class="h-100 container">
+        <div class="h-100 card text-center">
+            <div class="card-header">
+                <b>BƯỚC 3: CHỜ SỐ</b>
+            </div>
+            <div class="card-body">
+
+                <table class="table  text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">Quầy</th>
+                            <th scope="col">Số hiện tại</th>
+                            <th scope="col">Tiếp theo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td id="current_0">-</td>
+                            <td id="next_0">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td id="current_1">-</td>
+                            <td id="next_1">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td id="current_2">-</td>
+                            <td id="next_2">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td id="current_3">-</td>
+                            <td id="next_3">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Số của bạn</span>
+                    </div>
+                    <label class="form-control" id="socuaban_text"><b>17</b> (Vui lòng đợi đến lượt)</label>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger">Cấp cứu</button>
+                    <a href="./_4_PhongChuyenKhoa.html"><button type="button" class="btn btn-primary">Đến phòng chuyên khoa ►</button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+<script>
+    var quays = [];
+    var mynumber = 0;
+
+    function getMaxNumber() {
+        var all = [];
+        forEach(quays, function (q) {
+            all.push(q.current);
+            all.push(q.next);
+        });
+
+        return Math.max(...all);
+    }
+
+    function daPhucVuXong(quayIndex) {
+        var quayObj = quays[quayIndex];
+        quayObj.current = quayObj.next;
+        quayObj.next = getMaxNumber() + 1;
+        quays[quayIndex] = quayObj;
+    }
+
+    function bindView() {
+        var quayCuaToi = -1;
+        forEach(quays, function (quay) {
+            if(quay.current == mynumber) {
+                quayCuaToi = quay.index;
+                $("#current_" + quay.index).html("<strong>" + quay.current + "</strong>");
+            } else {
+                $("#current_" + quay.index).text(quay.current);
+            }
+            
+            $("#next_" + quay.index).text(quay.next);
+        });
+
+        const socuaban_text = $("#socuaban_text");
+        if(quayCuaToi == -1) {
+            socuaban_text.css("background-color", "white");
+            socuaban_text.html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
+        } else {
+            socuaban_text.css("background-color", "yellow");
+            socuaban_text.html("<b>" + mynumber + "</b>  (Đến quầy <b>" + (quayCuaToi + 1) + "</b> để được hỗ trợ)");
+        }
+    }
+
+    function interval() {
+        if (0 != randInt(0, 2)) return;
+        var quayPhucVu = Math.floor(Math.random() * 4);
+        if (quays[quayPhucVu].current != mynumber) {
+            daPhucVuXong(quayPhucVu);
+            bindView();
+        }
+    }
+
+    $(document).ready(function () {
+        mynumber = 46;
+
+        $("#socuaban_text").html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
+        var first = 23;
+
+        for (var i = 0; i < 4; i++) {
+            quays.push({
+                index: i,
+                current: first + i,
+                next: first + i + 4
+            });
+        }
+
+        setInterval(interval, 1000);
+
+
+
+
+    });
+</script>
+
+</html>

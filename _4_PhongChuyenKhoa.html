@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8">
+    <title>Change_me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./common.js" ></script>
+</head>
+
+<body>
+
+    <div class="h-100 container">
+        <div class="h-100 card text-center">
+            <div class="card-header">
+                <b>BƯỚC 4: KHÁM CHUYÊN KHOA</b>
+            </div>
+            <div class="card-body">
+
+                <table class="table  text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">Phòng</th>
+                            <th scope="col">Số hiện tại</th>
+                            <th scope="col">Tiếp theo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Da liễu</th>
+                            <td id="current_0">-</td>
+                            <td id="next_0">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tiêu hóa</th>
+                            <td id="current_1">-</td>
+                            <td id="next_1">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tai mũi họng</th>
+                            <td id="current_2">-</td>
+                            <td id="next_2">-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Khoa nhi</th>
+                            <td id="current_3">-</td>
+                            <td id="next_3">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Số của bạn</span>
+                    </div>
+                    <label class="form-control" id="socuaban_text"><b>Tiêu Hóa - 17</b> (Vui lòng đợi đến lượt)</label>
+                  </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                <div class="w-100 group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger">Cấp cứu</button>
+                    <a href="./_5_LieuTrinhDieuTri.html"><button type="button" class="btn btn-primary">Tiếp theo</button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var quays = [];
+        var mynumber = 0;
+        var myQuayIndex = 1;
+    
+        function daPhucVuXong(quayIndex) {
+            var quayObj = quays[quayIndex];
+            quayObj.current = quayObj.next;
+            quayObj.next = quayObj.current + 1;
+            quays[quayIndex] = quayObj;
+        }
+    
+        function bindView() {
+            var quayCuaToi = -1;
+            forEach(quays, function (quay) {
+                if(quay.current == mynumber) {
+                    quayCuaToi = quay.index;
+                    $("#current_" + quay.index).html("<strong>" + quay.current + "</strong>");
+                } else {
+                    $("#current_" + quay.index).text(quay.current);
+                }
+                
+                $("#next_" + quay.index).text(quay.next);
+            });
+    
+            const socuaban_text = $("#socuaban_text");
+            if(quays[myQuayIndex].current != mynumber) {
+                socuaban_text.css("background-color", "white");
+                socuaban_text.html("Khoa Tiêu Hóa: <b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
+            } else {
+                socuaban_text.css("background-color", "yellow");
+                socuaban_text.html("Khoa Tiêu Hóa: <b>" + mynumber + "</b>  (Vào phòng khám để được hỗ trợ)");
+            }
+        }
+    
+        function interval() {
+            if (0 != randInt(0, 2)) return;
+            var quayPhucVu = Math.floor(Math.random() * 4);
+            if (quayPhucVu == myQuayIndex && quays[myQuayIndex].current == mynumber) {
+                return;
+            }
+
+            daPhucVuXong(quayPhucVu);
+            bindView();
+        }
+    
+        $(document).ready(function () {
+
+            $("#socuaban_text").html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
+            var first = 23;
+    
+            for (var i = 0; i < 4; i++) {
+                var current = randInt(10, 30);
+                quays.push({
+                    index: i,
+                    current: current,
+                    next: current + i
+                });
+
+                if(i == myQuayIndex) {
+                    mynumber = current + randInt(10, 20);;
+                }
+            }
+
+        
+            setInterval(interval, 1000);
+    
+        });
+    </script>
+
+</body>
+
+</html>

@@ -44,7 +44,7 @@
         setInterval(update, 1000);
 
         function update() {
-            axios.get("http://dauden.cloud/number/get.php")
+            axios.get("https://dauden.cloud/number/get.php")
             .then(function (response) {
                 var num = response.data.number;
                 $("#mynumtext").html(num);

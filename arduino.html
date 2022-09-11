@@ -47,8 +47,13 @@
             axios.get("https://dauden.cloud/number/get.php")
             .then(function (response) {
                 var num = response.data.number;
-                $("#mynumtext").html(num);
+                if(num == null) {
+                    $("#mynumtext").html("--");
+                } else {
+                    $("#mynumtext").html(num);
+                }
             }).catch(error => {
+                $("#mynumtext").html("--");
                 console.log('Error: ', error)
             });
         }

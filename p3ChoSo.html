@@ -69,6 +69,10 @@
                 <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
                     <a href="./p4PhongChuyenKhoa.html" class="btn btn-primary">Đến phòng chuyên khoa ►</a>
                     <div class="dropdown-divider"></div>
+                    <a type="button" class="btn btn-secondary" href="/p2LaySo.html"">Quay về</a>  
+                    <div class="dropdown-divider"></div>
+                    <a type="button" class="btn btn-warning" id="requestNoti">Nhận thông báo khi đến lượt</a>
+                    <div class="dropdown-divider"></div>
                     <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
                 </div>
             </div>
@@ -98,6 +102,13 @@
         quayObj.current = quayObj.next;
         quayObj.next = getMaxNumber() + 1;
         quays[quayIndex] = quayObj;
+    }
+
+    function callNoti(){
+        if (Notification.permission === "granted" && isNotited == false){
+                isNotited == true
+                new Notification("Đã đến lượt của bạn")
+        } 
     }
 
     function bindView() {
@@ -152,6 +163,24 @@
 
 
     });
+
+    $("#requestNoti").click(() =>{
+        console.log(Notification.permission)
+        if (!("Notification" in window)) return alert("Trình duyệt của bạn k hỗ trợ cái noti")
+        
+        if (Notification.permission === "denied" || Notification.permission === "default"){
+            Notification.requestPermission().then((perm) =>{
+                if(perm === "granted"){
+                    alert("bạn đã đăng kí nhận thông báo thành công")
+                }else{
+                    alert("bạn cần phải đồng ý để được nhận thông báo")
+                }
+            })
+
+        }else{
+            alert("bạn đã cài đặt nhận thông báo từ trước")
+        }
+    })
 </script>
 
 </html>

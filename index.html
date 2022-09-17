@@ -51,7 +51,7 @@
             </div>
             <div class="card-footer text-muted">
                 <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="./p2LaySo.html" class="btn btn-primary">Tiếp theo</a>
+                    <a href="./p2LaySo.html" class="btn btn-primary disabled" id="nextButton">Tiếp theo</a>
                     <div class="dropdown-divider"></div>
                     <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>  
                 </div>
@@ -66,15 +66,26 @@
         getProvince('select_tinhthanh');
 
         $('#select_tinhthanh').change(function () {
+            
             var selectedValue = $('#select_tinhthanh').val();
+
             $('#select_quanhuyen').empty();
             $('#select_quanhuyen').append($('<option>', {
                 selected: true,
                 value: '0', 
                 text: "Chọn Quận / Huyện"
             }));
+           
             getDistrict(selectedValue, 'select_quanhuyen');
             console.log(selectedValue);
+           
+        });
+        getProvince('select_benhvien');
+        $('#select_benhvien').change(function () {
+            $("#nextButton").removeClass("disabled");
+            var selectedbenhvien = $('#select_benhvien').val();
+            if(selectedbenhvien === "Chọn Bệnh Viện") $("#nextButton").addClass("disabled");
+           
         });
     </script>
 

@@ -70,13 +70,14 @@
                     <a href="./p4PhongChuyenKhoa.html" class="btn btn-primary">Đến phòng chuyên khoa ►</a>
                     <div class="dropdown-divider"></div>
                     <a type="button" class="btn btn-secondary" href="/p2LaySo.html"">Quay về</a>  
-                    <div class="dropdown-divider"></div>
-                    <a type="button" class="btn btn-warning" id="requestNoti">Nhận thông báo khi đến lượt</a>
-                    <div class="dropdown-divider"></div>
-                    <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
+                    <div class=" dropdown-divider">
                 </div>
+                <a type="button" class="btn btn-warning" id="requestNoti">Nhận thông báo khi đến lượt</a>
+                <div class="dropdown-divider"></div>
+                <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
             </div>
         </div>
+    </div>
 
     </div>
 
@@ -104,31 +105,32 @@
         quays[quayIndex] = quayObj;
     }
 
-    function callNoti(){
-        if (Notification.permission === "granted" && isNotited == false){
-                isNotited == true
-                new Notification("Đã đến lượt của bạn")
-        } 
+    function callNoti() {
+        if (Notification.permission === "granted" && isNotited == false) {
+            isNotited == true
+            new Notification("Đã đến lượt của bạn")
+        }
     }
 
     function bindView() {
         var quayCuaToi = -1;
         forEach(quays, function (quay) {
-            if(quay.current == mynumber) {
+            if (quay.current == mynumber) {
                 quayCuaToi = quay.index;
                 $("#current_" + quay.index).html("<strong>" + quay.current + "</strong>");
             } else {
                 $("#current_" + quay.index).text(quay.current);
             }
-            
+
             $("#next_" + quay.index).text(quay.next);
         });
 
         const socuaban_text = $("#socuaban_text");
-        if(quayCuaToi == -1) {
+        if (quayCuaToi == -1) {
             socuaban_text.css("background-color", "white");
             socuaban_text.html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
         } else {
+            showNoti();
             socuaban_text.css("background-color", "yellow");
             socuaban_text.html("<b>" + mynumber + "</b>  (Đến quầy <b>" + (quayCuaToi + 1) + "</b> để được hỗ trợ)");
         }
@@ -164,23 +166,38 @@
 
     });
 
-    $("#requestNoti").click(() =>{
+    $("#requestNoti").click(() => {
         console.log(Notification.permission)
         if (!("Notification" in window)) return alert("Trình duyệt của bạn k hỗ trợ cái noti")
-        
-        if (Notification.permission === "denied" || Notification.permission === "default"){
-            Notification.requestPermission().then((perm) =>{
-                if(perm === "granted"){
+
+        if (Notification.permission === "denied" || Notification.permission === "default") {
+            Notification.requestPermission().then((perm) => {
+                if (perm === "granted") {
                     alert("bạn đã đăng kí nhận thông báo thành công")
-                }else{
+                } else {
                     alert("bạn cần phải đồng ý để được nhận thông báo")
                 }
             })
 
-        }else{
+        } else {
             alert("bạn đã cài đặt nhận thông báo từ trước")
         }
     })
+
+    /// Refer: https://www.javascripttutorial.net/web-apis/javascript-notification/
+    function showNoti() {
+        // create a notification object
+        const greeting = new Notification('Hi, How are you?', {
+            body: 'Have a good day'
+        });
+
+        // navigate to the https://www.javascripttutorial.net/ on click
+        greeting.addEventListener('click', function () {
+            window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/');
+        });
+    }
+
+
 </script>
 
 </html>

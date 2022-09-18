@@ -183,9 +183,11 @@
             alert("bạn đã cài đặt nhận thông báo từ trước")
         }
     })
-
+    var didShowNoti = false
     /// Refer: https://www.javascripttutorial.net/web-apis/javascript-notification/
     function showNoti() {
+        if(didShowNoti) return;
+        didShowNoti = true;
         // create a notification object
         const greeting = new Notification('Hi, How are you?', {
             body: 'Have a good day'

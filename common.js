@@ -42,7 +42,9 @@ function showNoti(message, fullMessage) {
     myRegistration.showNotification(message, {
         body: fullMessage,
         icon: './assets/icon.png',
-        vibrate: [300, 100, 400, 300, 100, 400],
+        image: './assets/noti-bg.jpeg',
+        silent: false,
+        vibrate: [300, 100, 400],
         tag: 'blah-blah-blah'
     });
 }

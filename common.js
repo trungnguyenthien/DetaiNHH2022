@@ -1,9 +1,15 @@
 function randInt(min, max) {
-    return min + Math.floor(Math.random() * max - min - 1);
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function shuffledArray(array) {
     return array.sort((a, b) => 0.5 - Math.random());
+}
+
+function pickOne(array) {
+    return shuffledArray(array).slice(0,1);
 }
 
 function forEach(array, action) {

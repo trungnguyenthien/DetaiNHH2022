@@ -165,6 +165,12 @@
 
 
     });
+    var myRegistration = null;
+    function registerSW() {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+            myRegistration = registration;
+        });
+    }
 
     $("#requestNoti").click(() => {
         console.log(Notification.permission)
@@ -173,30 +179,24 @@
         if (Notification.permission === "denied" || Notification.permission === "default") {
             Notification.requestPermission().then((perm) => {
                 if (perm === "granted") {
-                    alert("bạn đã đăng kí nhận thông báo thành công")
+                    alert("bạn đã đăng kí nhận thông báo thành công");
+                    registerSW();
                 } else {
-                    alert("bạn cần phải đồng ý để được nhận thông báo")
+                    alert("bạn cần phải đồng ý để được nhận thông báo");
                 }
             })
 
         } else {
             alert("bạn đã cài đặt nhận thông báo từ trước")
         }
+
     })
     var didShowNoti = false
     /// Refer: https://www.javascripttutorial.net/web-apis/javascript-notification/
     function showNoti() {
         if(didShowNoti) return;
         didShowNoti = true;
-        // create a notification object
-        const greeting = new Notification('Hi, How are you?', {
-            body: 'Have a good day'
-        });
-
-        // navigate to the https://www.javascripttutorial.net/ on click
-        greeting.addEventListener('click', function () {
-            window.open('https://www.javascripttutorial.net/web-apis/javascript-notification/');
-        });
+        registration.showNotification('Notification with ServiceWorker');
     }
 
 

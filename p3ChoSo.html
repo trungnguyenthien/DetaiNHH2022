@@ -105,13 +105,6 @@
         quays[quayIndex] = quayObj;
     }
 
-    function callNoti() {
-        if (Notification.permission === "granted" && isNotited == false) {
-            isNotited == true
-            new Notification("Đã đến lượt của bạn")
-        }
-    }
-
     function bindView() {
         var quayCuaToi = -1;
         forEach(quays, function (quay) {
@@ -130,7 +123,7 @@
             socuaban_text.css("background-color", "white");
             socuaban_text.html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
         } else {
-            showNoti();
+            showNoti(mynumber, quayCuaToi + 1);
             socuaban_text.css("background-color", "yellow");
             socuaban_text.html("<b>" + mynumber + "</b>  (Đến quầy <b>" + (quayCuaToi + 1) + "</b> để được hỗ trợ)");
         }
@@ -160,20 +153,48 @@
         }
 
         setInterval(interval, 1000);
-
-
-
-
     });
-    var myRegistration = null;
-    function registerSW() {
-        navigator.serviceWorker.register('sw.js').then(function(registration) {
-            myRegistration = registration;
-        });
-    }
+
 
     $("#requestNoti").click(() => {
         console.log(Notification.permission)
+        requestNotificationPermission();
+    })
+
+    var myRegistration = null;
+    function registerSW() {
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(function (registration) {
+                myRegistration = registration;
+            });
+    }
+
+    function showNotiOnTime(num, quay) {
+        if (didShowNoti) return;
+        didShowNoti = true;
+        showNoti(
+            "Đã đượt lượt phục vụ của bạn",
+            "Đã đượt lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
+        )
+    }
+
+    var didShowNoti = false
+    /// Refer: https://www.javascripttutorial.net/web-apis/javascript-notification/
+    /// https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification
+    function showNoti(message, fullMessage) {
+        const isGranted = Notification.permission === "granted"
+        if (!isGranted) return;
+
+        myRegistration.showNotification(message, {
+            body: fullMessage,
+            icon: './assets/icon.png',
+            vibrate: [300, 100, 400, 300, 100, 400],
+            tag: 'blah-blah-blah'
+        });
+    }
+
+    function requestNotificationPermission() {
         if (!("Notification" in window)) return alert("Trình duyệt của bạn k hỗ trợ cái noti")
 
         if (Notification.permission === "denied" || Notification.permission === "default") {
@@ -188,18 +209,8 @@
 
         } else {
             registerSW();
-            alert("bạn đã cài đặt nhận thông báo từ trước")
         }
-
-    })
-    var didShowNoti = false
-    /// Refer: https://www.javascripttutorial.net/web-apis/javascript-notification/
-    function showNoti() {
-        if(didShowNoti) return;
-        didShowNoti = true;
-        myRegistration.showNotification('Notification with ServiceWorker');
     }
-
 
 </script>
 

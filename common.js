@@ -43,6 +43,7 @@ function showNoti(message, fullMessage) {
         body: fullMessage,
         icon: './assets/icon.png',
         image: './assets/noti-bg.jpeg',
+        sound: './assets/bells-02.ogg',
         silent: false,
         vibrate: [300, 100, 400],
         tag: 'blah-blah-blah'

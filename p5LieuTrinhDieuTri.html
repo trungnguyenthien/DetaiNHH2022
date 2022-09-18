@@ -20,14 +20,52 @@
 
     <div class="container">
 
-        <div class="card text-center">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header text-center">
                 <b>BƯỚC 5: ĐƠN THUỐC</b>
             </div>
-            <div class="card-body">
-                
+            <div class="card-body text-left">
+                <p class="card-text">
+                    Họ và tên: <b id="_ten"> Nguyen Thien Trung</b id="_tuoi"> &emsp;&emsp;Tuổi: <b>35</b>
+                    <br />
+                    Địa chỉ: <b id="_diachi">--</b>
+                    <br />
+                    Mã y tế: <b id="_mayte">--</b> &emsp;BHXH: <b id="_bhxh">--</b>
+                </p>
+
+                <table class="table text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Thuốc</th>
+                            <th scope="col">Sáng</th>
+                            <th scope="col">Trưa</th>
+                            <th scope="col">Tối</th>
+                        </tr>
+                    </thead>
+                    <tbody id="_list_thuoc">
+                        <!-- <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Ottoooooo</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thorn</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the</td>
+                            <td>@twitter</td>
+                        </tr> -->
+                    </tbody>
+                </table>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted text-center">
                 <div class="w-100 group" role="group" aria-label="Basic example">
                     <b>CHÚC BẠN VÀ GIA ĐÌNH NHIỀU SỨC KHỎE</b>
                 </div>
@@ -37,21 +75,127 @@
     </div>
 
     <script>
-        ///https://provinces.open-api.vn/redoc#operation/show_all_divisions_api__get
-        //https://provinces.open-api.vn/api/d/?p=1
-        getProvince('select_tinhthanh');
 
-        $('#select_tinhthanh').change(function () {
-            var selectedValue = $('#select_tinhthanh').val();
-            $('#select_quanhuyen').empty();
-            $('#select_quanhuyen').append($('<option>', {
-                selected: true,
-                value: '0', 
-                text: "Chọn Quận / Huyện"
-            }));
-            getDistrict(selectedValue, 'select_quanhuyen');
-            console.log(selectedValue);
-        });
+
+const thuoc_data = [
+            {
+                ten_thuoc: "Ampicilin 500Mg Pharbaco 10X10",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Apo-Trihex 2Mg",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 1, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Sumakin 500/125 Mekophar",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Ryzodeg Flextouch 100u/ml Novo Nordisk",
+                don_vi: "",
+                sang: 1, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Plurivica Nadyphar (40g)",
+                don_vi: "chai",
+                sang: 1, 
+                trua: 0, 
+                toi: 0
+            },
+            {
+                ten_thuoc: "Carvedilol 6,25 Mg ",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 1, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Carvedilol 6,25 Mg (30ml)",
+                don_vi: "chai",
+                sang: 1, 
+                trua: 0, 
+                toi: 0
+            },
+            {
+                ten_thuoc: "Erythrommycin 250mg",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Voltaren Emulgel Novartis (20g)",
+                don_vi: "chai gel",
+                sang: 0, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Isaias V-600Mg",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 0, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Ibaneuron 80mg",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 1, 
+                toi: 1
+            },
+            {
+                ten_thuoc: "Acyclovir Stella Cream (5g)",
+                don_vi: "kem boi",
+                sang: 0, 
+                trua: 0, 
+                toi: "1"
+            },
+            {
+                ten_thuoc: "Silkeron Creme Phil Inter (10g)",
+                don_vi: "kem boi",
+                sang: 0, 
+                trua: 0, 
+                toi: "1"
+            },
+            {
+                ten_thuoc: "Ofcin 200Mg Dhg 2X10",
+                don_vi: "vien",
+                sang: 1, 
+                trua: 1, 
+                toi: 1
+            }
+        ];
+
+        sinhToaThuoc();
+
+        function sinhToaThuoc() {
+            var soThuoc = 4;
+            var toa = shuffledArray(thuoc_data).slice(0, soThuoc);
+            forEachIndex(toa, function(index, thuoc) {
+                // const item = '<tr><th scope=\"row\">2</th><td>Jacob</td><td>Thorn</td><td>@fat</td></tr>';
+                $("#_list_thuoc").append(`
+                    <tr>
+                        <th scope=\"row\">${index + 1}</th>
+                        <td><b>${thuoc.ten_thuoc}</b></td>
+                        <td>${thuoc.sang}</td>
+                        <td>${thuoc.trua}</td>
+                        <td>${thuoc.toi}</td>
+                    </tr>
+                `);
+            });
+        }
     </script>
 
 </body>

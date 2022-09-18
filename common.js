@@ -2,10 +2,27 @@ function randInt(min, max) {
     return min + Math.floor(Math.random() * max - min - 1);
 }
 
+function shuffledArray(array) {
+    return array.sort((a, b) => 0.5 - Math.random());
+}
+
 function forEach(array, action) {
     for (var i = 0; i < array.length; i++)
         action(array[i]);
 }
+
+function forEachIndex(array, action) {
+    for (var i = 0; i < array.length; i++)
+        action(i, array[i]);
+}
+
+String.prototype.format = function() {
+    a = this;
+    for (k in arguments) {
+      a = a.replace("{" + k + "}", arguments[k])
+    }
+    return a
+  }
 
 function getProvince(selectId) {
     axios.get('https://provinces.open-api.vn/api/p/')

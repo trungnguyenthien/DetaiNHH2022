@@ -123,7 +123,7 @@
             socuaban_text.css("background-color", "white");
             socuaban_text.html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
         } else {
-            showNoti(mynumber, quayCuaToi + 1);
+            showNotiOnTime(mynumber, quayCuaToi + 1);
             socuaban_text.css("background-color", "yellow");
             socuaban_text.html("<b>" + mynumber + "</b>  (Đến quầy <b>" + (quayCuaToi + 1) + "</b> để được hỗ trợ)");
         }
@@ -167,7 +167,7 @@
         showNoti(
             "Đã đượt lượt phục vụ của bạn",
             "Đã đượt lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
-        )
+        );
     }
 
     var didShowNoti = false

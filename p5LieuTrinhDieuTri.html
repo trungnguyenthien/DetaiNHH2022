@@ -18,9 +18,7 @@
 </head>
 
 <body>
-
     <div class="container">
-
         <div class="card">
             <div class="card-header text-center">
                 <b>BƯỚC 5: ĐƠN THUỐC</b>
@@ -76,10 +74,7 @@
     </div>
 
     <script>
-        
-
         sinhToaThuoc();
-
         function sinhToaThuoc() {
             $("#_tuoi").text(randInt(25, 35));
 
@@ -91,7 +86,6 @@
             var soThuoc = randInt(4, 6);
             var toa = shuffledArray(thuoc_data).slice(0, soThuoc);
             forEachIndex(toa, function (index, thuoc) {
-                // const item = '<tr><th scope=\"row\">2</th><td>Jacob</td><td>Thorn</td><td>@fat</td></tr>';
                 $("#_list_thuoc").append(`
                     <tr>
                         <th scope=\"row\">${index + 1}</th>
@@ -104,7 +98,5 @@
             });
         }
     </script>
-
 </body>
-
 </html>

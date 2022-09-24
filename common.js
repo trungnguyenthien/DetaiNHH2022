@@ -88,13 +88,11 @@ function requestNotificationPermission() {
     if (Notification.permission === "denied" || Notification.permission === "default") {
         Notification.requestPermission().then((perm) => {
             if (perm === "granted") {
-                alert("bạn đã đăng kí nhận thông báo thành công");
                 registerSW();
             } else {
-                alert("bạn cần phải đồng ý để được nhận thông báo");
+                alert("Bạn cần phải đồng ý để được nhận thông báo");
             }
         })
-
     } else {
         registerSW();
     }

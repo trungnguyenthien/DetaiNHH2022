@@ -72,8 +72,6 @@
                     <a type="button" class="btn btn-secondary" href="/p2LaySo.html"">Quay về</a>  
                     <div class=" dropdown-divider">
                 </div>
-                <a type="button" class="btn btn-warning" id="requestNoti">Nhận thông báo khi đến lượt</a>
-                <div class="dropdown-divider"></div>
                 <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
             </div>
         </div>
@@ -85,6 +83,8 @@
 
 </body>
 <script>
+    requestNotificationPermission();
+
     var quays = [];
     var mynumber = 0;
 
@@ -154,12 +154,6 @@
 
         setInterval(interval, 1000);
     });
-
-
-    $("#requestNoti").click(() => {
-        console.log(Notification.permission)
-        requestNotificationPermission();
-    })
 
     function showNotiOnTime(num, quay) {
         if (didShowNoti) return;

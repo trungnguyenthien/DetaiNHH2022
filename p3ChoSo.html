@@ -116,14 +116,19 @@
             }
 
             $("#next_" + quay.index).text(quay.next);
+
+            if (quay.next == mynumber) {
+                showNotiOnTime(mynumber, quay.next + 1);
+            }
         });
+
+
 
         const socuaban_text = $("#socuaban_text");
         if (quayCuaToi == -1) {
             socuaban_text.css("background-color", "white");
             socuaban_text.html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
         } else {
-            showNotiOnTime(mynumber, quayCuaToi + 1);
             socuaban_text.css("background-color", "yellow");
             socuaban_text.html("<b>" + mynumber + "</b>  (Đến quầy <b>" + (quayCuaToi + 1) + "</b> để được hỗ trợ)");
         }

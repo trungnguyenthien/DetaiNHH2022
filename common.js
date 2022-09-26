@@ -87,11 +87,7 @@ function requestNotificationPermission() {
 
     if (Notification.permission === "denied" || Notification.permission === "default") {
         Notification.requestPermission().then((perm) => {
-            if (perm === "granted") {
-                registerSW();
-            } else {
-                alert("Bạn cần phải đồng ý để được nhận thông báo");
-            }
+            if (perm === "granted") registerSW();
         })
     } else {
         registerSW();

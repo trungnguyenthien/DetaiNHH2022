@@ -130,7 +130,7 @@
         function bindView() {
             var quayCuaToi = -1;
             forEach(quays, function (quay) {
-                if (quay.current == mynumber) {
+                if (quay.current == mynumber && quay == myQuayIndex) {
                     quayCuaToi = quay.index;
                     $("#current_" + quay.index).html("<strong>" + quay.current + "</strong>");
                 } else {

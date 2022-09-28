@@ -115,12 +115,16 @@
         var quays = [];
         var mynumber = 0;
         var myQuayIndex = 1;
+        const soKhoa = 10;
 
         function daPhucVuXong(quayIndex) {
             var quayObj = quays[quayIndex];
             quayObj.current = quayObj.next;
             quayObj.next = quayObj.current + 1;
             quays[quayIndex] = quayObj;
+            if(quayObj.next == myNumber && quayIndex == myQuayIndex) {
+                showNotiOnTime();
+            }
         }
 
         function bindView() {
@@ -148,7 +152,7 @@
 
         function interval() {
             if (0 != randInt(0, 2)) return;
-            var quayPhucVu = Math.floor(Math.random() * 4);
+            var quayPhucVu = Math.floor(Math.random() * soKhoa);
             if (quayPhucVu == myQuayIndex && quays[myQuayIndex].current == mynumber) {
                 return;
             }
@@ -162,7 +166,7 @@
             $("#socuaban_text").html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
             var first = 23;
 
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < soKhoa; i++) {
                 var current = randInt(10, 30);
                 quays.push({
                     index: i,
@@ -176,11 +180,11 @@
             }
 
 
-            setInterval(interval, 1000);
+            setInterval(interval, 500);
 
         });
 
-        function showNotiOnTime(num, quay) {
+        function showNotiOnTime() {
             if (didShowNoti) return;
             didShowNoti = true;
             showNoti(

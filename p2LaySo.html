@@ -14,51 +14,54 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./common.js" ></script>
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
+    <div class="background-blur">
+        <div id="navbar"></div>
+        <div class="container">
+            <div class="card text-center">
+                <div class="card-header">
+                    <b>BƯỚC 2: LẤY SỐ</b>
+                </div>
+                <div class="card-body">
 
-    <div class="container">
-        <div class="card text-center">
-            <div class="card-header">
-                <b>BƯỚC 2: LẤY SỐ</b>
-            </div>
-            <div class="card-body">
+                    <table class="table table-bordered text-left">
 
-                <table class="table table-bordered text-left">
+                        <tbody>
+                        <tr>
+                            <th scope="row">SỐ ĐÃ PHÁT RA</th>
+                            <td>45</td>
 
-                    <tbody>
-                      <tr>
-                        <th scope="row">SỐ ĐÃ PHÁT RA</th>
-                        <td>45</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">SỐ ĐANG PHỤC VỤ</th>
-                        <td>23</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                        </tr>
+                        <tr>
+                            <th scope="row">SỐ ĐANG PHỤC VỤ</th>
+                            <td>23</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
 
-            </div>
-            <div class="card-footer text-muted">
-                <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
-                    <div class="w-100 btn-group" role="group" aria-label="Basic example">
-                        <a type="button" class="w-50 btn btn-secondary" href="/index.html">Quay về</a>  
-                        <a href="./p3ChoSo.html" class="btn btn-primary w-50">Lấy số</a>
-                        
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
+                        <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="w-50 btn btn-secondary" href="/index.html">Quay về</a>  
+                            <a href="./p3ChoSo.html" class="btn btn-primary w-50">Lấy số</a>
+                            
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+                        <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
                     </div>
-
-                    <div class="dropdown-divider"></div>
-                    <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
+        $("#navbar").load("component/navbar.html")
     </script>
 
 </body>

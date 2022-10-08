@@ -18,52 +18,53 @@
 </head>
 
 <body>
+    <div class="">
+        <div id ="navbar"></div>
+        <div class="container">
+            <div class="card text-center bg-blur">
+                <div class="card-header">
+                    <b>CHỌN CƠ SỞ ĐIỀU TRỊ</b>
+                </div>
+                <div class="card-body">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        id="select_tinhthanh">
+                        <option selected value="0">Chọn Tỉnh thành</option>
+                    </select>
 
-    <div class="container bg-blur">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        id="select_quanhuyen">
+                        <option selected value="0">Chọn Quận / Huyện</option>
+                    </select>
 
-        <div class="card text-center">
-            <div class="card-header">
-                <b>CHỌN CƠ SỞ ĐIỀU TRỊ</b>
-            </div>
-            <div class="card-body">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                    id="select_tinhthanh">
-                    <option selected value="0">Chọn Tỉnh thành</option>
-                </select>
-
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                    id="select_quanhuyen">
-                    <option selected value="0">Chọn Quận / Huyện</option>
-                </select>
-
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                    id="select_benhvien">
-                    <option selected>Chọn Bệnh Viện</option>
-                    <option value="1">Bệnh viện Chợ Rẫy</option>
-                    <option value="2">Bệnh viện Thống Nhất</option>
-                    <option value="3">Bệnh viện Quân y 175</option>
-                    <option value="4">Bệnh viện Đại học Y Dược</option>
-                    <option value="5">Bệnh viện An Bình</option>
-                    <option value="6">Bệnh viện Bệnh Nhiệt đới</option>
-                    <option value="7">Bệnh viện Bình Dân</option>
-                    <option value="8">Bệnh viện Nguyễn Tri Phương</option>
-                    <option value="9">Bệnh viện Từ Dũ</option>
-                </select>
-            </div>
-            <div class="card-footer text-muted">
-                <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="./p2LaySo.html" class="btn btn-primary disabled" id="nextButton">Tiếp theo</a>
-                    <div class="dropdown-divider"></div>
-                    <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>  
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        id="select_benhvien">
+                        <option selected>Chọn Bệnh Viện</option>
+                        <option value="1">Bệnh viện Chợ Rẫy</option>
+                        <option value="2">Bệnh viện Thống Nhất</option>
+                        <option value="3">Bệnh viện Quân y 175</option>
+                        <option value="4">Bệnh viện Đại học Y Dược</option>
+                        <option value="5">Bệnh viện An Bình</option>
+                        <option value="6">Bệnh viện Bệnh Nhiệt đới</option>
+                        <option value="7">Bệnh viện Bình Dân</option>
+                        <option value="8">Bệnh viện Nguyễn Tri Phương</option>
+                        <option value="9">Bệnh viện Từ Dũ</option>
+                    </select>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
+                        <a href="./p2LaySo.html" class="btn btn-primary disabled" id="nextButton">Tiếp theo</a>
+                        <div class="dropdown-divider"></div>
+                        <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>  
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
         ///https://provinces.open-api.vn/redoc#operation/show_all_divisions_api__get
         //https://provinces.open-api.vn/api/d/?p=1
+        $("#navbar").load("component/navbar.html")
         getProvince('select_tinhthanh');
 
         $('#select_tinhthanh').change(function () {
@@ -88,6 +89,7 @@
             if(selectedbenhvien === "Chọn Bệnh Viện") $("#nextButton").addClass("disabled");
            
         });
+        
     </script>
 
 </body>

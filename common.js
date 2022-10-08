@@ -93,3 +93,6 @@ function requestNotificationPermission() {
         registerSW();
     }
 }
+//use to load navbar every page with included navbar div
+$("#navbar").load("/component/navbar.html")
+

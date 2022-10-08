@@ -20,6 +20,8 @@
 </head>
 
 <body>
+    <div>
+        <div id ="navbar"></div>
     <div class="h-100 container">
         <div class="h-100 card text-center bg-blur">
             <div class="card-header">
@@ -101,7 +103,7 @@
                 <div class="w-100 h-10 btn-group-vertical" role="group" aria-label="Basic example">
 
                     <div class="w-100 h-10 btn-group" role="group" aria-label="Basic example">
-                        <a type="button" class="btn btn-secondary w-50" href="/p3ChoSo.html"">Quay về</a> 
+                        <a type="button" class="btn btn-secondary w-50" href="./p3ChoSo.html"">Quay về</a> 
                         
                         <a href="./p5LieuTrinhDieuTri.html" class="btn btn-primary w-50">Tiếp theo</a>
                     </div>
@@ -112,10 +114,11 @@
             </div>
         </div>
     </div>
-
+    </div>
     </div>
 
     <script>
+        $("#navbar").load("component/navbar.html")
         requestNotificationPermission();
         var quays = [];
         var mynumber = 0;

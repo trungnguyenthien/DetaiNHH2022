@@ -1,3 +1,18 @@
 .bg-blur {
-    background: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .9);
+}
+
+html{
+    height: 100%;
+}
+.background-blur{
+    background: rgba(255, 255, 255, 0);
+}
+
+body{
+    background-image: url("https://benhvienk.vn/data/media/1601/images/IMG_1553.jpeg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

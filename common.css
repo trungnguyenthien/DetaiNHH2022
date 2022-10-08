@@ -10,6 +10,7 @@ html{
 }
 
 body{
+    padding: 20px;
     background-image: url("https://benhvienk.vn/data/media/1601/images/IMG_1553.jpeg");
     background-attachment: fixed;
     height: 100%;

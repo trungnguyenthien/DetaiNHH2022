@@ -96,3 +96,17 @@ function requestNotificationPermission() {
 //use to load navbar every page with included navbar div
 $("#navbar").load("/component/navbar.html")
 
+
+function makeInterval(delay, time, callback) {
+    var count = 0;
+    var intervarlId;
+    intervarlId = setInterval(function() {
+        if(count === time) {
+            clearInterval(intervarlId);
+            return;
+        }
+        count++;
+        callback();
+
+    }, delay);
+}

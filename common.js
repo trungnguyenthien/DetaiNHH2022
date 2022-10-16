@@ -66,7 +66,7 @@ function showNoti(message, fullMessage) {
         body: fullMessage,
         icon: './assets/icon.png',
         image: './assets/noti-bg.jpeg',
-        sound: 'https://github.com/trungnguyenthien/DetaiNHH2022/blob/main/assets/ring.mp3?raw=true',
+        // sound: 'https://github.com/trungnguyenthien/DetaiNHH2022/blob/main/assets/ring.mp3?raw=true',
         silent: false,
         vibrate: [300, 100, 400],
         tag: 'blah-blah-blah'
@@ -112,7 +112,7 @@ function makeInterval(delay, time, callback) {
     }, delay);
 }
 
-const playSound = (url) => {
-    const audio = new Audio(url);
+const playSound = () => {
+    const audio = new Audio("https://github.com/trungnguyenthien/DetaiNHH2022/blob/main/assets/ring.mp3?raw=true");
     audio.play();
 }

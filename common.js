@@ -66,7 +66,7 @@ function showNoti(message, fullMessage) {
         body: fullMessage,
         icon: './assets/icon.png',
         image: './assets/noti-bg.jpeg',
-        sound: './assets/bells-02.ogg',
+        sound: 'https://github.com/trungnguyenthien/DetaiNHH2022/blob/main/assets/ring.mp3?raw=true',
         silent: false,
         vibrate: [300, 100, 400],
         tag: 'blah-blah-blah'

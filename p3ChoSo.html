@@ -18,6 +18,11 @@
 </head>
 
 <body>
+    <audio id="myAudio">
+        <source src="./assets/bells-02.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
     <div>
         <!-- <div id="navbar"></div> -->
         <div class="h-100 container">
@@ -167,6 +172,16 @@
         setInterval(interval, 1000);
     });
 
+
+    function playAudio() {
+        $("#myAudio").play();
+        // document.getElementById("myAudio").play();
+    }
+
+    // function pauseAudio() {
+    //     x.pause();
+    // }
+
     function showNotiOnTime(num, quay) {
         if (didShowNoti) return;
         didShowNoti = true;
@@ -177,10 +192,10 @@
         //         "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
         //     );
         // });
-        playSound();
+        playAudio();
         showNoti(
             "Đã đến lượt phục vụ của bạn",
-            "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
+            "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + (quay.index + 1) + " để được phục vụ."
         );
     }
 

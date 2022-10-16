@@ -170,7 +170,7 @@
     function showNotiOnTime(num, quay) {
         if (didShowNoti) return;
         didShowNoti = true;
-
+        playSound("./assets/ring.mp3");
         makeInterval(5000, 4, function () {
             showNoti(
             "Đã đến lượt phục vụ của bạn",

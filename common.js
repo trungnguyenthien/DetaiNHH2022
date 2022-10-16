@@ -9,7 +9,7 @@ function shuffledArray(array) {
 }
 
 function pickOne(array) {
-    return shuffledArray(array).slice(0,1);
+    return shuffledArray(array).slice(0, 1);
 }
 
 function forEach(array, action) {
@@ -22,13 +22,13 @@ function forEachIndex(array, action) {
         action(i, array[i]);
 }
 
-String.prototype.format = function() {
+String.prototype.format = function () {
     a = this;
     for (k in arguments) {
-      a = a.replace("{" + k + "}", arguments[k])
+        a = a.replace("{" + k + "}", arguments[k])
     }
     return a
-  }
+}
 
 function getProvince(selectId) {
     axios.get('https://provinces.open-api.vn/api/p/')
@@ -74,6 +74,7 @@ function showNoti(message, fullMessage) {
 }
 
 var myRegistration = null;
+
 function registerSW() {
     navigator.serviceWorker
         .register('sw.js')
@@ -100,8 +101,8 @@ $("#navbar").load("/component/navbar.html")
 function makeInterval(delay, time, callback) {
     var count = 0;
     var intervarlId;
-    intervarlId = setInterval(function() {
-        if(count === time) {
+    intervarlId = setInterval(function () {
+        if (count === time) {
             clearInterval(intervarlId);
             return;
         }
@@ -109,4 +110,9 @@ function makeInterval(delay, time, callback) {
         callback();
 
     }, delay);
+}
+
+const playSound = (url) => {
+    const audio = new Audio(url);
+    audio.play();
 }

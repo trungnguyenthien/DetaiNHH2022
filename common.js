@@ -116,3 +116,24 @@ const playSound = () => {
     const audio = new Audio("https://github.com/trungnguyenthien/DetaiNHH2022/blob/main/assets/ring.mp3?raw=true");
     audio.play();
 }
+
+/// COOKIE
+function setCookie(key, value, expiry) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key, defval = null) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    var output = keyValue ? keyValue[2] : null;
+    if(output == null) {
+        output = defval;
+    }
+    return output
+}
+
+function eraseCookie(key) {
+    var keyValue = getCookie(key);
+    setCookie(key, keyValue, '-1');
+}

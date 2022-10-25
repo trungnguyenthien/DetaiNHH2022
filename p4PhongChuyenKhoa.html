@@ -130,8 +130,10 @@
             quayObj.current = quayObj.next;
             quayObj.next = quayObj.current + 1;
             quays[quayIndex] = quayObj;
-            if(quayObj.next == mynumber && quayIndex == myQuayIndex) {
-                showNotiOnTime();
+            var prenumber = getCookie("prenumber", 1);
+
+            if(quayObj.current == mynumber + prenumber && quayIndex == myQuayIndex) {
+                showNotiOnTime(prenumber);
             }
         }
 
@@ -192,13 +194,13 @@
 
         });
 
-        function showNotiOnTime() {
+        function showNotiOnTime(prenumber) {
             if (didShowNoti) return;
             playSound();
             didShowNoti = true;
             showNoti(
-                "Đã đến lượt phục vụ của bạn",
-                "Đã đến lượt phục vụ của bạn (" + mynumber + ").\n Vui lòng đến Khoa Tiêu Hóa để được phục vụ."
+                "Sắp đến lượt phục vụ của bạn",
+                "Còn " + prenumber + " số nữa là lượt của bạn (" + mynumber + ").\n Vui lòng đến Khoa Tiêu Hóa để được phục vụ."
             );
         }
 

@@ -129,8 +129,10 @@
 
             $("#next_" + quay.index).text(quay.next);
 
-            if (quay.next == mynumber) {
-                showNotiOnTime(mynumber, quay);
+            var prenumber = getCookie("prenumber", 1);
+
+            if (quay.current == mynumber + prenumber) {
+                showNotiOnTime(mynumber, quay, prenumber);
             }
         });
 
@@ -182,7 +184,7 @@
     //     x.pause();
     // }
 
-    function showNotiOnTime(num, quay) {
+    function showNotiOnTime(num, quay, prenumber) {
         if (didShowNoti) return;
         didShowNoti = true;
         // playSound("./assets/ring.mp3");
@@ -194,8 +196,8 @@
         // });
         playAudio();
         showNoti(
-            "Đã đến lượt phục vụ của bạn",
-            "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + (quay.index + 1) + " để được phục vụ."
+            "Sắp đến lượt phục vụ của bạn",
+            "Còn " + prenumber + " số nữa là đến lượt của bạn (" + num + ").\n Vui lòng đến quầy " + (quay.index + 1) + " để được phục vụ."
         );
     }
 

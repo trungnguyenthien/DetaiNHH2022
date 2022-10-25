@@ -129,7 +129,7 @@
 
             $("#next_" + quay.index).text(quay.next);
 
-            var prenumber = getCookie("prenumber", 1);
+            var prenumber = parseInt(getCookie("prenumber", 1));
 
             if (quay.current == mynumber + prenumber) {
                 showNotiOnTime(mynumber, quay, prenumber);

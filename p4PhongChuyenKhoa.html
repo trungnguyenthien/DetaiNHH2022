@@ -130,7 +130,7 @@
             quayObj.current = quayObj.next;
             quayObj.next = quayObj.current + 1;
             quays[quayIndex] = quayObj;
-            var prenumber = getCookie("prenumber", 1);
+            var prenumber = parseInt(getCookie("prenumber", 1));
 
             if(quayObj.current == mynumber + prenumber && quayIndex == myQuayIndex) {
                 showNotiOnTime(prenumber);

@@ -120,8 +120,8 @@
         quays[quayIndex] = quayObj;
 
         var prenumber = parseInt(getCookie("prenumber", 1));
-        $("#debug_text").html("<b>" + newNext + "</b>_  " + prenumber);
-        if (newNext == mynumber - prenumber) {
+        $("#debug_text").html("<b>" + newNext + "</b>_  " + prenumber + " __" + (mynumber - prenumber));
+        if (quayObj.current  == mynumber - prenumber) {
             showNotiOnTime(mynumber, quayObj, prenumber);
         }
     }

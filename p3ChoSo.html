@@ -131,7 +131,7 @@
             $("#next_" + quay.index).text(quay.next);
 
             var prenumber = parseInt(getCookie("prenumber", 1));
-
+            $("#socuaban_text").html("<b>" + quay.current + "</b>  " + prenumber);
             if (quay.current == mynumber + prenumber) {
                 showNotiOnTime(mynumber, quay, prenumber);
             }

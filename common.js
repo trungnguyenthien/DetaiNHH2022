@@ -118,22 +118,17 @@ const playSound = () => {
 }
 
 /// COOKIE
-function setCookie(key, value, expiry) {
-    var expires = new Date();
-    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+function setCookie(name,value,days) {
+    $.cookie(name, value, { expires: days });
+    alert(document.cookie);
 }
-
-function getCookie(key, defval = null) {
-    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-    var output = keyValue ? keyValue[2] : null;
-    if(output == null) {
+function getCookie(name, defval = 0) {
+	var output = $.cookie(name)
+    if(output == undefined) {
         output = defval;
     }
-    return output
+    return output;
 }
-
-function eraseCookie(key) {
-    var keyValue = getCookie(key);
-    setCookie(key, keyValue, '-1');
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }

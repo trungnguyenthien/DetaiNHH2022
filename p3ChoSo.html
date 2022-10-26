@@ -116,15 +116,16 @@
         var quayObj = quays[quayIndex];
         quayObj.current = quayObj.next;
         var newNext = getMaxNumber() + 1;
+        var current = newNext - 1;
         quayObj.next = newNext;
         quays[quayIndex] = quayObj;
 
         var prenumber = parseInt(getCookie("prenumber", 1));
-        $("#debug_text").html("<b>" + newNext + "</b>_  " + prenumber + " __" + (mynumber - prenumber));
-        if (quayObj.current  == mynumber - prenumber) {
-            showNotiOnTime(mynumber, quayObj, prenumber);
+        $("#debug_text").html("<b>" + current + "</b>_  " + prenumber + " __" + (mynumber - prenumber) + "__" + (current === mynumber - prenumber));
+        if (current === mynumber - prenumber) {
+            showNotiOnTime(mynumber, quayObj, prenumber);  
         }
-    }
+    }  
 
     function bindView() {
         var quayCuaToi = -1;
@@ -190,6 +191,7 @@
     // }
 
     function showNotiOnTime(num, quay, prenumber) {
+        alert("Show noti");
         if (didShowNoti) return;
         didShowNoti = true;
         // playSound("./assets/ring.mp3");
@@ -199,7 +201,7 @@
         //         "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
         //     );
         // });
-        playAudio();
+        
         showNoti(
             "Sắp đến lượt phục vụ của bạn",
             "Còn " + prenumber + " số nữa là đến lượt của bạn (" + num + ").\n Vui lòng đến quầy " + (quay.index + 1) + " để được phục vụ."

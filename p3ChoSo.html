@@ -117,6 +117,12 @@
         quayObj.current = quayObj.next;
         quayObj.next = getMaxNumber() + 1;
         quays[quayIndex] = quayObj;
+
+        var prenumber = parseInt(getCookie("prenumber", 1));
+        $("#debug_text").html("<b>" + quayObj.current + "</b>_  " + prenumber);
+        if (quayObj.current == mynumber - prenumber) {
+            showNotiOnTime(mynumber, quayObj, prenumber);
+        }
     }
 
     function bindView() {
@@ -131,11 +137,7 @@
 
             $("#next_" + quay.index).text(quay.next);
 
-            var prenumber = parseInt(getCookie("prenumber", 1));
-            $("#debug_text").html("<b>" + quay.current + "</b>_  " + prenumber);
-            if (quay.current == mynumber + prenumber) {
-                showNotiOnTime(mynumber, quay, prenumber);
-            }
+
         });
 
 

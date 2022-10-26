@@ -70,6 +70,7 @@
                             <span class="input-group-text text-center">Số của bạn</span>
                         </div>
                         <label class="form-control" id="socuaban_text">-</label>
+                        <label class="form-control" id="debug_text">-</label>
                     </div>
 
                 </div>
@@ -131,7 +132,7 @@
             $("#next_" + quay.index).text(quay.next);
 
             var prenumber = parseInt(getCookie("prenumber", 1));
-            $("#socuaban_text").html("<b>" + quay.current + "</b>  " + prenumber);
+            $("#debug_text").html("<b>" + quay.current + "</b>_  " + prenumber);
             if (quay.current == mynumber + prenumber) {
                 showNotiOnTime(mynumber, quay, prenumber);
             }

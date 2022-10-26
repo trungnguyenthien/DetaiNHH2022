@@ -115,12 +115,13 @@
     function daPhucVuXong(quayIndex) {
         var quayObj = quays[quayIndex];
         quayObj.current = quayObj.next;
-        quayObj.next = getMaxNumber() + 1;
+        var newNext = getMaxNumber() + 1;
+        quayObj.next = newNext;
         quays[quayIndex] = quayObj;
 
         var prenumber = parseInt(getCookie("prenumber", 1));
-        $("#debug_text").html("<b>" + quayObj.current + "</b>_  " + prenumber);
-        if (quayObj.current == mynumber - prenumber) {
+        $("#debug_text").html("<b>" + newNext + "</b>_  " + prenumber);
+        if (newNext == mynumber - prenumber) {
             showNotiOnTime(mynumber, quayObj, prenumber);
         }
     }

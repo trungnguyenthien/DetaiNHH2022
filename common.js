@@ -120,7 +120,6 @@ const playSound = () => {
 /// COOKIE
 function setCookie(name,value,days) {
     $.cookie(name, value, { expires: days });
-    alert(document.cookie);
 }
 function getCookie(name, defval = 0) {
 	var output = $.cookie(name)

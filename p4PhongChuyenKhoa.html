@@ -17,114 +17,127 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="./common.js"></script>
-    <link rel="stylesheet" href="common.css"/>
+    <link rel="stylesheet" href="common.css" />
 </head>
 
 <body>
     <div>
         <!-- <div id ="navbar"></div> -->
-    <div class="h-100 container">
-        <div class="h-100 card text-center bg-blur">
-            <div class="card-header">
-                <b>KHÁM CHUYÊN KHOA</b>
-            </div>
-            <div class="card-body">
-
-                <table class="table  text-left">
-                    <thead>
-                        <tr>
-                            <th scope="col">Phòng</th>
-                            <th scope="col">Số hiện tại</th>
-                            <th scope="col">Tiếp theo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Da liễu</th>
-                            <td id="current_0">-</td>
-                            <td id="next_0">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Tiêu hóa</th>
-                            <td id="current_1">-</td>
-                            <td id="next_1">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Tai mũi họng</th>
-                            <td id="current_2">-</td>
-                            <td id="next_2">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa nhi</th>
-                            <td id="current_3">-</td>
-                            <td id="next_3">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Ung bướu</th>
-                            <td id="current_4">-</td>
-                            <td id="next_4">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa thần kinh</th>
-                            <td id="current_5">-</td>
-                            <td id="next_5">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa mắt</th>
-                            <td id="current_6">-</td>
-                            <td id="next_6">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa thần kinh</th>
-                            <td id="current_7">-</td>
-                            <td id="next_7">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa nội</th>
-                            <td id="current_8">-</td>
-                            <td id="next_8">-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Khoa sản</th>
-                            <td id="current_9">-</td>
-                            <td id="next_9">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="input-group-vertical text-center">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Số của bạn</span>
-                    </div>
-                    <label class="form-control" id="socuaban_text">-</label>
+        <div class="h-100 container">
+            <div class="h-100 card text-center bg-blur">
+                <div class="card-header">
+                    <b>KHÁM CHUYÊN KHOA</b>
                 </div>
+                <div class="card-body">
 
-            </div>
-            <div class="card-footer text-muted">
-                <div class="w-100 h-10 btn-group-vertical" role="group" aria-label="Basic example">
+                    <table class="table  text-left">
+                        <thead>
+                            <tr>
+                                <th scope="col">Phòng</th>
+                                <th scope="col">Số hiện tại</th>
+                                <th scope="col">Tiếp theo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th id="rname_0" scope="row">Da liễu</th>
+                                <td id="current_0">-</td>
+                                <td id="next_0">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_1" scope="row">Tiêu hóa</th>
+                                <td id="current_1">-</td>
+                                <td id="next_1">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_2" scope="row">Tai mũi họng</th>
+                                <td id="current_2">-</td>
+                                <td id="next_2">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_3" scope="row">Khoa nhi</th>
+                                <td id="current_3">-</td>
+                                <td id="next_3">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_4" scope="row">Ung bướu</th>
+                                <td id="current_4">-</td>
+                                <td id="next_4">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_5" scope="row">Khoa thần kinh</th>
+                                <td id="current_5">-</td>
+                                <td id="next_5">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_6" scope="row">Khoa mắt</th>
+                                <td id="current_6">-</td>
+                                <td id="next_6">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_7" scope="row">Khoa thần kinh</th>
+                                <td id="current_7">-</td>
+                                <td id="next_7">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_8" scope="row">Khoa nội</th>
+                                <td id="current_8">-</td>
+                                <td id="next_8">-</td>
+                            </tr>
+                            <tr>
+                                <th id="rname_9" scope="row">Khoa sản</th>
+                                <td id="current_9">-</td>
+                                <td id="next_9">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <div class="w-100 h-10 btn-group" role="group" aria-label="Basic example">
-                        <a type="button" class="btn btn-secondary w-50" href="./p3ChoSo.html"">Quay về</a> 
+                    <div class="input-group-vertical text-center">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Số của bạn</span>
+                        </div>
+                        <label class="form-control" id="socuaban_text">-</label>
+                    </div>
+
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="w-100 h-10 btn-group-vertical" role="group" aria-label="Basic example">
+
+                        <div class="w-100 h-10 btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-secondary w-50" href="./p3ChoSo.html"">Quay về</a> 
                         
-                        <a href="./p5LieuTrinhDieuTri.html" class="btn btn-primary w-50">Tiếp theo</a>
+                        <a href=" ./p5LieuTrinhDieuTri.html" class="btn btn-primary w-50">Tiếp theo</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
                     </div>
-                    <div class="dropdown-divider"></div>
-                    <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
+
                 </div>
-                
             </div>
         </div>
     </div>
     </div>
-    </div>
 
     <script>
+        const khoaNames = [
+            "Da liễu",
+            "Tiêu hóa",
+            "Tai mũi họng",
+            "Nhi",
+            "Ung bướu",
+            "Thần kinh",
+            "Mắt",
+            "Xương khớp",
+            "Nội",
+            "Sản"
+        ];
         $("#navbar").load("component/navbar.html")
         requestNotificationPermission();
         var quays = [];
         var mynumber = 0;
-        var myQuayIndex = 1;
-        const soKhoa = 10;
+        var myKhoaName = "";
+        var myKhoaIndex = "";
+        const soKhoa = khoaNames.length;
 
         function daPhucVuXong(quayIndex) {
             var quayObj = quays[quayIndex];
@@ -133,7 +146,7 @@
             quays[quayIndex] = quayObj;
             var prenumber = parseInt(getCookie("prenumber", 1));
 
-            if(quayObj.current == (mynumber - prenumber) && quayIndex == myQuayIndex) {
+            if (quayObj.current == (mynumber - prenumber) && quayIndex == myKhoaIndex) {
                 showNotiOnTime(prenumber);
             }
         }
@@ -141,7 +154,7 @@
         function bindView() {
             var quayCuaToi = -1;
             forEach(quays, function (quay) {
-                if (quay.current == mynumber && quay == myQuayIndex) {
+                if (quay.current == mynumber && quay == myKhoaIndex) {
                     quayCuaToi = quay.index;
                     $("#current_" + quay.index).html("<strong>" + quay.current + "</strong>");
                 } else {
@@ -152,19 +165,19 @@
             });
 
             const socuaban_text = $("#socuaban_text");
-            if (quays[myQuayIndex].current != mynumber) {
+            if (quays[myKhoaIndex].current != mynumber) {
                 socuaban_text.css("background-color", "white");
-                socuaban_text.html("Khoa Tiêu Hóa: <b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
+                socuaban_text.html("Khoa " + myKhoaName + ": <b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
             } else {
                 socuaban_text.css("background-color", "yellow");
-                socuaban_text.html("Khoa Tiêu Hóa: <b>" + mynumber + "</b>  (Vào phòng khám để được hỗ trợ)");
+                socuaban_text.html("Khoa " + myKhoaName + ": <b>" + mynumber + "</b>  (Vào phòng khám để được hỗ trợ)");
             }
         }
 
         function interval() {
             if (0 != randInt(0, 2)) return;
             var quayPhucVu = Math.floor(Math.random() * soKhoa);
-            if (quayPhucVu == myQuayIndex && quays[myQuayIndex].current == mynumber) {
+            if (quayPhucVu == myKhoaIndex && quays[myKhoaIndex].current == mynumber) {
                 return;
             }
 
@@ -173,21 +186,30 @@
         }
 
         $(document).ready(function () {
+            khoaNames.forEach(function (kname, kindex, array) {
+                $("#rname_" + kindex).text((kindex + 1) + ") Khoa " + kname);
+            });
+
+            var query = window.location.search.substring(1);
+            var param = parse_query_string(query);
+            myKhoaIndex = param.khoa;
+            myKhoaName = khoaNames[myKhoaIndex];
+            mynumber = param.mynumber;
 
             $("#socuaban_text").html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
             var first = 23;
 
             for (var i = 0; i < soKhoa; i++) {
                 var current = randInt(10, 30);
+                if(i == myKhoaIndex) {
+                    current = mynumber - randInt(5, 10);
+                }
+                
                 quays.push({
                     index: i,
                     current: current,
                     next: current + 1
                 });
-
-                if (i == myQuayIndex) {
-                    mynumber = current + randInt(10, 15);;
-                }
             }
 
 
@@ -201,7 +223,7 @@
             didShowNoti = true;
             showNoti(
                 "Sắp đến lượt phục vụ của bạn",
-                "Còn " + prenumber + " số nữa là lượt của bạn (" + mynumber + ").\n Vui lòng đến Khoa Tiêu Hóa để được phục vụ."
+                "Còn " + prenumber + " số nữa là lượt của bạn (" + mynumber + ").\n Vui lòng đến Khoa " + myKhoaName + " để được phục vụ."
             );
         }
 

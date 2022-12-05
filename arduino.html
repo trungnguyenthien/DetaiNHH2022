@@ -22,12 +22,15 @@
 
         <div class="card text-center">
             <div class="card-header">
-                <b>KHOA TIÊU HOÁ</b>
+                <h2 id="label1"></h2>
             </div>
             <div class="card-body">
-                <h1 id="mynumtext"  style="font-size:600%;">
+                <h1 id="mynumtext" style="font-size:600%;">
                     --
                 </h1>
+            </div>
+            <div class="card-header">
+                <b id="label2"></b>
             </div>
             <div class="card-footer text-muted">
                 <div class="w-100 btn-group-vertical" role="group" aria-label="Basic example">
@@ -36,27 +39,58 @@
                     <a type="button" class="btn btn-danger" href="tel:115">Cấp cứu</a>
                 </div>
             </div>
+
         </div>
 
     </div>
 
     <script>
         setInterval(update, 1000);
+        var mynumber = 132;
+        var myKhoaName = "Tiêu Hóa";
+
+        $(document).ready(function () {
+            $("#label1").text("Khoa Tiêu Hóa: STT-" + mynumber);
+        });
 
         function update() {
             axios.get("https://dauden.cloud/number/get.php")
-            .then(function (response) {
-                var num = response.data.number;
-                if(num == null) {
+                .then(function (response) {
+                    var num = response.data.number;
+                    if (num == null) {
+                        $("#mynumtext").html("--");
+                    } else {
+                        $("#mynumtext").html(num);
+                    }
+                    daPhucVuXong();
+                }).catch(error => {
                     $("#mynumtext").html("--");
-                } else {
-                    $("#mynumtext").html(num);
-                }
-            }).catch(error => {
-                $("#mynumtext").html("--");
-                console.log('Error: ', error)
-            });
+                    console.log('Error: ', error)
+                });
         }
+
+        function daPhucVuXong() {
+            var prenumber = parseInt(getCookie("prenumber", 1));
+
+            if (quayObj.current == (mynumber - prenumber)) {
+                showNotiOnTime(prenumber);
+            }
+        }
+
+
+        function showNotiOnTime(prenumber) {
+            if (didShowNoti) return;
+            playSound();
+            didShowNoti = true;
+            const txt =  "Còn " + prenumber + " số nữa là lượt của bạn (" + mynumber + ").\n Vui lòng đến Khoa " + myKhoaName + " để được phục vụ.";
+            showNoti(
+                "Sắp đến lượt phục vụ của bạn",
+                txt
+            );
+            $("#label2").text(txt);
+        }
+
+        var didShowNoti = false
     </script>
 
 </body>

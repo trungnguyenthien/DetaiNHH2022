@@ -62,17 +62,17 @@
                     } else {
                         $("#mynumtext").html(num);
                     }
-                    daPhucVuXong();
+                    daPhucVuXong(num);
                 }).catch(error => {
                     $("#mynumtext").html("--");
                     console.log('Error: ', error)
                 });
         }
 
-        function daPhucVuXong() {
+        function daPhucVuXong(num) {
             var prenumber = 2;
 
-            if (quayObj.current == (mynumber - prenumber)) {
+            if (num == (mynumber - prenumber)) {
                 showNotiOnTime(prenumber);
             }
         }

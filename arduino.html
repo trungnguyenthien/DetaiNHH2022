@@ -79,9 +79,7 @@
 
 
         function showNotiOnTime(prenumber) {
-            if (didShowNoti) return;
             playSound();
-            didShowNoti = true;
             const txt =  "Còn " + prenumber + " số nữa là lượt của bạn (" + mynumber + ").\n Vui lòng đến Khoa " + myKhoaName + " để được phục vụ.";
             showNoti(
                 "Sắp đến lượt phục vụ của bạn",

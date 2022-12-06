@@ -149,7 +149,7 @@
 
             var prenumber = parseInt(getCookie("prenumber", 1));
 
-            if (quayObj.current == (mynumber - prenumber) && quayIndex == myKhoaIndex) {
+            if (quayObj.current >= (mynumber - prenumber) && quayIndex == myKhoaIndex) {
                 showNotiOnTime(prenumber);
             }
         }

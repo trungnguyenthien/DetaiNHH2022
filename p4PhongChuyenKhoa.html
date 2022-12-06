@@ -193,8 +193,6 @@
             bindView();
         }
 
-
-
         $(document).ready(function () {
             khoaNames.forEach(function (kname, kindex, array) {
                 $("#rname_" + kindex).text((kindex + 1) + ") Khoa " + kname);
@@ -241,6 +239,7 @@
                             }
 
                         }
+                        interval();
                     }).catch(error => {
                         myCurrentText.text('--');
                         myNextText.text('--');

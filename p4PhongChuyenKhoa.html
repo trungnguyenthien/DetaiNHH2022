@@ -225,7 +225,7 @@
                     .then(function (response) {
                         var num = response.data.number;
                         const myCurrentText = $("#current_" + myKhoaIndex);
-                        const myNextText = $("#next" + myKhoaIndex);
+                        const myNextText = $("#next_" + myKhoaIndex);
 
                         if (num == null) {
                             myCurrentText.text('--');
@@ -234,10 +234,9 @@
                             var numStr = "" + num;
                             if (num != myCurrentText.text()) {
                                 myCurrentText.text(num);
-                                myNextText.text(num + 1);
+                                myNextText.text(parseInt(num) + 1);
                                 daPhucVuXong(myKhoaIndex);
                             }
-
                         }
                         interval();
                     }).catch(error => {

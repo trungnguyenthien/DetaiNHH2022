@@ -183,7 +183,7 @@
 
         function interval() {
             if (0 != randInt(0, 2)) return;
-            
+
             var quayPhucVu = Math.floor(Math.random() * soKhoa);
             if (quayPhucVu == myKhoaIndex) {
                 return;
@@ -191,33 +191,9 @@
 
             daPhucVuXong(quayPhucVu);
             bindView();
-            requestApi();
         }
 
-        function requestApi() {
-            axios.get("https://dauden.cloud/number/get.php")
-                .then(function (response) {
-                    var num = response.data.number;
-                    const myCurrentText = $("#current_" + myKhoaIndex);
-                    const myNextText = $("#next" + myKhoaIndex);
 
-                    if (num == null) {
-                        myCurrentText.text('--');
-                        myNextText.text('--');
-                    } else {
-                        var numStr = "" + num;
-                        if (num != myCurrentText.text()) {
-                            myCurrentText.text(num);
-                            myNextText.text(num + 1);
-                            daPhucVuXong(myKhoaIndex);
-                        }
-
-                    }
-                }).catch(error => {
-                    myCurrentText.text('--');
-                    myNextText.text('--');
-                });
-        }
 
         $(document).ready(function () {
             khoaNames.forEach(function (kname, kindex, array) {
@@ -246,8 +222,30 @@
                 });
             }
 
+            setInterval(function () {
+                axios.get("https://dauden.cloud/number/get.php")
+                    .then(function (response) {
+                        var num = response.data.number;
+                        const myCurrentText = $("#current_" + myKhoaIndex);
+                        const myNextText = $("#next" + myKhoaIndex);
 
-            // setInterval(interval, 20);
+                        if (num == null) {
+                            myCurrentText.text('--');
+                            myNextText.text('--');
+                        } else {
+                            var numStr = "" + num;
+                            if (num != myCurrentText.text()) {
+                                myCurrentText.text(num);
+                                myNextText.text(num + 1);
+                                daPhucVuXong(myKhoaIndex);
+                            }
+
+                        }
+                    }).catch(error => {
+                        myCurrentText.text('--');
+                        myNextText.text('--');
+                    });
+            }, 1000);
 
         });
 

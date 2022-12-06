@@ -140,10 +140,13 @@
         const soKhoa = khoaNames.length;
 
         function daPhucVuXong(quayIndex) {
-            var quayObj = quays[quayIndex];
-            quayObj.current = quayObj.next;
-            quayObj.next = quayObj.current + 1;
-            quays[quayIndex] = quayObj;
+            if (quayIndex != myKhoaIndex) {
+                var quayObj = quays[quayIndex];
+                quayObj.current = quayObj.next;
+                quayObj.next = parseInt(quayObj.current) + 1;
+                quays[quayIndex] = quayObj;
+            }
+
             var prenumber = parseInt(getCookie("prenumber", 1));
 
             if (quayObj.current == (mynumber - prenumber) && quayIndex == myKhoaIndex) {
@@ -209,9 +212,7 @@
 
             for (var i = 0; i < soKhoa; i++) {
                 var current = randInt(10, 30);
-                if (i == myKhoaIndex) {
-                    break;
-                }
+
 
                 quays.push({
                     index: i,
@@ -235,6 +236,8 @@
                             if (num != myCurrentText.text()) {
                                 myCurrentText.text(num);
                                 myNextText.text(parseInt(num) + 1);
+                                quays[myKhoaIndex].current = num;
+                                quays[myKhoaIndex].next = parseInt(num) + 1;
                                 daPhucVuXong(myKhoaIndex);
                             }
                         }

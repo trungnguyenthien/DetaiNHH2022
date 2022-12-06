@@ -176,22 +176,46 @@
 
         // Creates a Web Worker
         var worker = new Worker("sw.js");
-        // Posts a message to the Web Worker
         worker.postMessage(0);
-        // Triggered by postMessage in the Web Worker
         worker.onmessage = function (evt) {
             interval()
         };
 
         function interval() {
             if (0 != randInt(0, 2)) return;
+            requestApi();
             var quayPhucVu = Math.floor(Math.random() * soKhoa);
-            if (quayPhucVu == myKhoaIndex && quays[myKhoaIndex].current == mynumber) {
+            if (quayPhucVu == myKhoaIndex) {
                 return;
             }
 
             daPhucVuXong(quayPhucVu);
             bindView();
+        }
+
+        function requestApi() {
+            axios.get("https://dauden.cloud/number/get.php")
+                .then(function (response) {
+                    var num = response.data.number;
+                    const myCurrentText = $("#current_" + myKhoaIndex);
+                    const myNextText = $("#next" + myKhoaIndex);
+
+                    if (num == null) {
+                        myCurrentText.text('--');
+                        myNextText.text('--');
+                    } else {
+                        var numStr = "" + num;
+                        if (num != myCurrentText.text()) {
+                            myCurrentText.text(num);
+                            myNextText.text(num + 1);
+                            daPhucVuXong(myKhoaIndex);
+                        }
+
+                    }
+                }).catch(error => {
+                    myCurrentText.text('--');
+                    myNextText.text('--');
+                });
         }
 
         $(document).ready(function () {
@@ -211,7 +235,7 @@
             for (var i = 0; i < soKhoa; i++) {
                 var current = randInt(10, 30);
                 if (i == myKhoaIndex) {
-                    current = mynumber - randInt(5, 10);
+                    break;
                 }
 
                 quays.push({

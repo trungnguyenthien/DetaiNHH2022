@@ -123,9 +123,9 @@
         var prenumber = parseInt(getCookie("prenumber", 1));
         $("#debug_text").html("<b>" + current + "</b>_  " + prenumber + " __" + (mynumber - prenumber) + "__" + (current === mynumber - prenumber));
         if (current === mynumber - prenumber) {
-            showNotiOnTime(mynumber, quayObj, prenumber);  
+            showNotiOnTime(mynumber, quayObj, prenumber);
         }
-    }  
+    }
 
     function bindView() {
         var quayCuaToi = -1;
@@ -154,6 +154,13 @@
         }
     }
 
+    // Creates a Web Worker
+    var worker = new Worker("sw.js");
+    worker.postMessage(0);
+    worker.onmessage = function (evt) {
+        interval()
+    };
+
     function interval() {
         if (0 != randInt(0, 2)) return;
         var quayPhucVu = Math.floor(Math.random() * 4);
@@ -176,8 +183,6 @@
                 next: first + i + 4
             });
         }
-
-        setInterval(interval, 200);
     });
 
 
@@ -200,7 +205,7 @@
         //         "Đã đến lượt phục vụ của bạn (" + num + ").\n Vui lòng đến quầy " + quay + " để được phục vụ."
         //     );
         // });
-        
+
         showNoti(
             "Sắp đến lượt phục vụ của bạn",
             "Còn " + prenumber + " số nữa là đến lượt của bạn (" + num + ").\n Vui lòng đến quầy " + (quay.index + 1) + " để được phục vụ."

@@ -140,8 +140,8 @@
         const soKhoa = khoaNames.length;
 
         function daPhucVuXong(quayIndex) {
+            var quayObj = quays[quayIndex];
             if (quayIndex != myKhoaIndex) {
-                var quayObj = quays[quayIndex];
                 quayObj.current = quayObj.next;
                 quayObj.next = parseInt(quayObj.current) + 1;
                 quays[quayIndex] = quayObj;
@@ -188,9 +188,6 @@
             if (0 != randInt(0, 2)) return;
 
             var quayPhucVu = Math.floor(Math.random() * soKhoa);
-            if (quayPhucVu == myKhoaIndex) {
-                return;
-            }
 
             daPhucVuXong(quayPhucVu);
             bindView();
@@ -208,11 +205,9 @@
             mynumber = param.mynumber;
 
             $("#socuaban_text").html("<b>" + mynumber + "</b>  (Vui lòng đợi đến lượt)");
-            var first = 23;
 
             for (var i = 0; i < soKhoa; i++) {
                 var current = randInt(10, 30);
-
 
                 quays.push({
                     index: i,
@@ -232,7 +227,6 @@
                             myCurrentText.text('--');
                             myNextText.text('--');
                         } else {
-                            var numStr = "" + num;
                             if (num != myCurrentText.text()) {
                                 myCurrentText.text(num);
                                 myNextText.text(parseInt(num) + 1);

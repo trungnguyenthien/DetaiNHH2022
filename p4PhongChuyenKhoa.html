@@ -183,7 +183,7 @@
 
         function interval() {
             if (0 != randInt(0, 2)) return;
-            requestApi();
+            
             var quayPhucVu = Math.floor(Math.random() * soKhoa);
             if (quayPhucVu == myKhoaIndex) {
                 return;
@@ -191,6 +191,7 @@
 
             daPhucVuXong(quayPhucVu);
             bindView();
+            requestApi();
         }
 
         function requestApi() {

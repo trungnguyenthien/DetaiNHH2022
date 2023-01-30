@@ -94,10 +94,31 @@
 
                     <div class="input-group-vertical text-center">
                         <div class="input-group-prepend">
+                            <span class="input-group-text">Bạn nhận thông báo vào lúc nào?</span>
+                        </div>
+                        <div class="btn-group pt-2 pb-2" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="truoc1so" id="truoc1so" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="truoc1so">trước 1 số</label>
+                          
+                            <input type="radio" class="btn-check" name="truoc2so" id="truoc2so" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="truoc2so">trước 2 số</label>
+                          
+                            <input type="radio" class="btn-check" name="truoc3so" id="truoc3so" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="truoc3so">trước 3 số</label>
+
+                            <input type="radio" class="btn-check" name="truoc4so" id="truoc4so" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="truoc4so">trước 4 số</label>
+                          </div>
+                    </div>
+
+                    <div class="input-group-vertical text-center">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">Số của bạn</span>
                         </div>
                         <label class="form-control" id="socuaban_text">-</label>
                     </div>
+
+                    
 
                 </div>
                 <div class="card-footer text-muted">
@@ -138,6 +159,30 @@
         var myKhoaName = "";
         var myKhoaIndex = "";
         const soKhoa = khoaNames.length;
+        const timeBeforeControls = [ "#truoc1so", "#truoc2so", "#truoc3so", "#truoc4so"];
+        const timeBeforeValue = [ 1, 2, 3, 4];
+
+        setTimeBefore(getTimeBefore());
+
+        timeBeforeControls.forEach(function(id, index) {
+            $(id).click(function() {
+                setTimeBefore(index + 1);
+            });
+        });
+
+        function setTimeBefore(value) {
+            if(value > 4 || value < 1) return;
+            forEach(timeBeforeControls, function(id) {
+                $(id).prop('checked', false);
+            });
+            $(timeBeforeControls[value - 1]).prop('checked', true);
+            setCookie('prenumber', value);
+        }
+
+        function getTimeBefore() {
+            var selectedValue = getCookie('prenumber', 1);
+            return selectedValue;
+        }
 
         function daPhucVuXong(quayIndex) {
             var quayObj = quays[quayIndex];
